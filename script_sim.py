@@ -2,9 +2,6 @@ import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 from sentence_transformers import SentenceTransformer
 import numpy as np
-import pandas as pd
-from sklearn.metrics.pairwise import cosine_similarity
-from sentence_transformers import SentenceTransformer
 from transformers import T5ForConditionalGeneration,T5Tokenizer
 
 
@@ -15,21 +12,23 @@ tokenizer = T5Tokenizer.from_pretrained(model_name)
 data = pd.read_csv('preprocessed_dataset.csv')
 question = input('Please enter your question: ') 
 
-def get_sim_quest():
+
+
+def get_sim_quest(models):
     num_models = len(models)
-    corpus_tfidf = []
+    corpus_tfidf_list = []
+    question_tfidf_list = []
     for model_name in models:
         model = SentenceTransformer(model_name)
-        corpus_tfidf.append(model.encode(data['questions']))
+        corpus_tfidf_list.append(model.encode(data['questions']))
+        question_tfidf_list.append(model.encode([question]))
 
 
-    question_tfidf = []
-    for model_name in models:
-        model = SentenceTransformer(model_name)
-        question_tfidf.append(model.encode([question]))
 
-    cos_similarities = [cosine_similarity(q_tfidf, c_tfidf) for q_tfidf, c_tfidf in zip(question_tfidf, corpus_tfidf)]
+    cos_similarities = [cosine_similarity(q_tfidf, c_tfidf) for q_tfidf, c_tfidf in zip(question_tfidf_list, corpus_tfidf_list)]
     avg_similarities = sum(cos_similarities) / num_models
+
+    print(cos_similarities[0].shape)
 
     sim_quest_idx = avg_similarities.argmax()
     sim_quest = data['questions'][sim_quest_idx]
@@ -46,9 +45,9 @@ def get_top_10(cos_similarities):
         best_doc =data['questions'][i]
         print(best_doc)
 
-cos_similarities,context = get_sim_quest()
+cos_similarities,context = get_sim_quest(models)
 
-def answer_generation(context):
+def answer_generation(context,model):
     
     input_text = f"question:{question} context : {context}"
     input_ids = tokenizer.encode(input_text , return_tensors = "pt")
@@ -60,4 +59,4 @@ def answer_generation(context):
 
 print("Question : " , question)
 get_top_10(cos_similarities)
-print("Answer : ",answer_generation(context))
+print("Answer : ",answer_generation(context,model))
