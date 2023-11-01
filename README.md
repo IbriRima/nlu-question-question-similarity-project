@@ -5,13 +5,12 @@ This project is a question-answering system that leverages natural language proc
 2. Install the required dependencies and libraries, as specified in the Installation section.
 3. Run the script by providing your question and the path to a CSV file containing questions and answers as command-line arguments.
    For example:
-   <pre>
-   <code>
-   ```python
-  python your_script.py --question "Your question here" --data-file "preprocessed_dataset.csv"
-  ```
-  </code>
-  </pre>
+<pre>
+<code>
+```python your_script.py --question "Your question here" --data-file "preprocessed_dataset.csv"
+```
+</code>
+</pre>
    
 5. The script will analyze the user question, identify the most relevant questions from the dataset, and generate a meaningful answer based on the provided context.
 
