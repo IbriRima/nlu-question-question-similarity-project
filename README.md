@@ -27,6 +27,6 @@ pip install -r requirements.txt
 You can configure the script by modifying the list of NLP models used, adjusting the maximum number of tokens for answer generation, and specifying other settings within the script.
 
 ## Authors
-- Ben Salah Jihed
-- Ben Ghnia Souhir
-- Ibri Rima
+- Jihed Ben Salah 
+- Souhir Ben Ghnia
+- Rima Ibri 
