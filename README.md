@@ -15,8 +15,6 @@ python your_script.py --question "Your question here" --data-file "preprocessed_
 
 ## Installation
 All packages needed in this project may be found at the requirement.txt file you will need simply to execute the following command on your terminal:
-Markdown:
-
 <pre>
 <code>
 pip install -r requirements.txt
