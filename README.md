@@ -7,8 +7,7 @@ This project is a question-answering system that leverages natural language proc
    For example:
 <pre>
 <code>
-```python your_script.py --question "Your question here" --data-file "preprocessed_dataset.csv"
-```
+python your_script.py --question "Your question here" --data-file "preprocessed_dataset.csv"
 </code>
 </pre>
    
@@ -20,9 +19,7 @@ Markdown:
 
 <pre>
 <code>
-```python
-  pip install -r requirements.txt
-  ```
+pip install -r requirements.txt
 </code>
 </pre>
 
