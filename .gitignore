@@ -1,0 +1,34 @@
+# Python-specific
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.tox/
+
+# IDE and editor-specific
+.vscode/
+.idea/
+.pycproject/
+
+# Virtual environments
+question_question/
+env/
+
+# Log files
+*.log
+
+# Dependency management
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.mypy/
+.coverage
+.coveragerc
+
+# Miscellaneous
+.DS_Store
+.vscode-server/
+__init__.py
